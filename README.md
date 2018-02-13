@@ -14,4 +14,9 @@ The output file is called repeat_donors.txt. The output is the recipient id, zip
 ## Approach
 As the data is being 'streamed in' it is added to a pandas dataframe and cleaned up. Any rows with essential missing or malformed data is dropped. Then unique donors are found and added to a list, and there is also a check to see if the donation information was streamed in the wrong order. First time donations are dropped from the dataframe, but remain on the unique donors list. If a repeat donor is found then the row index is sent to another function that calculates and finds the neccessary information for the output.
 
-I chose to use a pandas dataframe because it's functionality makes this type of running analysis very simple and easy to tackle.
+I chose to use a pandas dataframe because it's functionality makes this type of running analysis very simple and easy to use.
+
+
+## Assumptions
+- I assumed that the sum of the contributions would be rounded to the nearest dollar the same way the percentile amount was.
+- A donor was only considered a repeat donor if they donated in a previous year, and all donations from the earliest year are not considered.
