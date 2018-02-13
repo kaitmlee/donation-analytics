@@ -11,8 +11,8 @@ def scan(donors, percentile):
     for index, row in donors.iterrows():
         #already in list
         if (row["NAME"], row["ZIP_CODE"]) in unique_donors:
-            #if year2<year1 then update value in dict/drop row from df.
-            if(row["TRANSACTION_DT"]<unique_donors[row["NAME"], row["ZIP_CODE"]]):
+            #if year2<=year1 then update value in dict/drop row from df.
+            if(row["TRANSACTION_DT"]<=unique_donors[row["NAME"], row["ZIP_CODE"]]):
                 unique_donors[row["NAME"], row["ZIP_CODE"]] = row["TRANSACTION_DT"]
                 donors.drop(index, inplace=True)
             #otherwise there needs to be output
